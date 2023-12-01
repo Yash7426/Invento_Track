@@ -6,7 +6,8 @@ import SearchInput from "../Form/SearchInput";
 import useCategory from "../../hooks/useCategory";
 import { useCart } from "../../context/cart";
 import { Badge } from "antd";
-
+import PrimarySearchAppBar from "../NavBar"
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 const Header = () => {
   const [auth, setAuth] = useAuth();
   const [cart] = useCart();
@@ -22,7 +23,7 @@ const Header = () => {
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top " style={{fontSize:'14px'}}>
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -37,18 +38,18 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <Link to="/" className="navbar-brand">
-              🛒 Ecommerce App
+              🛒 Invento-Track
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <SearchInput />
-              <li className="nav-item">
+              <li className="nav-item ml-2 mr-2">
                 <NavLink to="/" className="nav-link ">
                   Home
                 </NavLink>
               </li>
               <li className="nav-item dropdown">
                 <Link
-                  className="nav-link dropdown-toggle"
+                  className="nav-link dropdown-toggle ml-2 mr-2"
                   to={"/categories"}
                   data-bs-toggle="dropdown"
                 >
@@ -124,8 +125,8 @@ const Header = () => {
               )}
               <li className="nav-item">
                 <NavLink to="/cart" className="nav-link">
-                  <Badge count={cart?.length} showZero offset={[10, -5]}>
-                    Cart
+                  <Badge count={cart?.length} showZero offset={[5, -5]} color="green" >
+                    <ShoppingCartIcon/>
                   </Badge>
                 </NavLink>
               </li>
@@ -133,6 +134,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
+     {/* <PrimarySearchAppBar/>  */}
     </>
   );
 };

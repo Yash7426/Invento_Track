@@ -5,7 +5,10 @@ import AdminMenu from "../../components/Layout/AdminMenu";
 import Layout from "../../components/Layout/Layout";
 import { useAuth } from "../../context/auth";
 import moment from "moment";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import { Select } from "antd";
+import data from "./trial.json"
 const { Option } = Select;
 
 const AdminOrders = () => {
@@ -42,6 +45,20 @@ const AdminOrders = () => {
       console.log(error);
     }
   };
+
+  const handleDriverChange = async (orderId, value) => {
+    try {
+      const { data } = await axios.put(`/api/v1/auth/driver-status/${orderId}`, {
+        driverName: value,
+      });
+      getOrders();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log("sdfsd ",data)
+  console.log(orders)
   return (
     <Layout title={"All Orders Data"}>
       <div className="row dashboard">
@@ -49,6 +66,11 @@ const AdminOrders = () => {
           <AdminMenu />
         </div>
         <div className="col-md-9">
+        <Stack spacing={2} direction="row">
+      <Button variant="text">Text</Button>
+      <Button variant="contained">Contained</Button>
+      <Button variant="outlined">Outlined</Button>
+    </Stack>
           <h1 className="text-center">All Orders</h1>
           {orders?.map((o, i) => {
             return (
@@ -79,7 +101,17 @@ const AdminOrders = () => {
                             </Option>
                           ))}
                         </Select>
-                      </td>
+                      </td> <Select
+                          bordered={false}
+                          onChange={(value) => handleChange(o._id, value)}
+                          defaultValue={o?.status}
+                        >
+                          {status.map((s, i) => (
+                            <Option key={i} value={s}>
+                              {s}
+                            </Option>
+                          ))}
+                        </Select>
                       <td>{o?.buyer?.name}</td>
                       <td>{moment(o?.createAt).fromNow()}</td>
                       <td>{o?.payment.success ? "Success" : "Failed"}</td>
@@ -99,10 +131,28 @@ const AdminOrders = () => {
                           height={"100px"}
                         />
                       </div>
-                      <div className="col-md-8">
+                      <div className="col-md-4">
                         <p>{p.name}</p>
                         <p>{p.description.substring(0, 30)}</p>
                         <p>Price : {p.price}</p>
+                      </div>
+                      <div className="col-md-4">
+                        <td>
+                        assign a driver
+
+                        </td>
+                      <Select
+                          bordered={false}
+                          onChange={(value) => handleDriverChange(o._id, value)}
+                          defaultValue={o.driver || data[0].driverName}
+                        >
+                          {data.map((s, i) => (
+                            <Option key={i} value={s.driverName}>
+                              {s.driverName}
+                            </Option>
+                          ))}
+                        </Select>
+           
                       </div>
                     </div>
                   ))}

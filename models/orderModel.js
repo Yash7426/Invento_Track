@@ -18,6 +18,12 @@ const orderSchema = new mongoose.Schema(
       default: "Not Process",
       enum: ["Not Process", "Processing", "Shipped", "deliverd", "cancel"],
     },
+    driver:{
+      type:String,
+      default:'driver1',
+      // enum:['']
+      required:false
+    }
   },
   { timestamps: true }
 );

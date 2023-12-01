@@ -8,6 +8,7 @@ import {
   getOrdersController,
   getAllOrdersController,
   orderStatusController,
+  driverStatusController,
 } from "../controllers/authController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 
@@ -51,6 +52,14 @@ router.put(
   requireSignIn,
   isAdmin,
   orderStatusController
+);
+
+// driver update
+router.put(
+  "/driver-status/:orderId",
+  requireSignIn,
+  isAdmin,
+  driverStatusController
 );
 
 export default router;

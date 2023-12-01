@@ -255,3 +255,23 @@ export const orderStatusController = async (req, res) => {
     });
   }
 };
+//order status
+export const driverStatusController = async (req, res) => {
+  try {
+    const { orderId } = req.params;
+    const { driverName } = req.body;
+    const orders = await orderModel.findByIdAndUpdate(
+      orderId,
+      { driver:driverName },
+      { new: true }
+    );
+    res.json(orders);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error While Updateing Order",
+      error,
+    });
+  }
+};

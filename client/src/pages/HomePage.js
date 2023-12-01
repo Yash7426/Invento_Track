@@ -117,8 +117,13 @@ const HomePage = () => {
       />
       {/* banner image */}
       <div className="container-fluid row mt-3 home-page">
-        <div className="col-md-3 filters">
-          <h4 className="text-center">Filter By Category</h4>
+        <div className="col-md-2 filters" style={{height:"380px",border:"2px solid gray" , margin:"5px" , borderRadius:"30px"}}>
+          <h4
+            className="text-center text-success"
+            style={{ marginBlock: "10px" }}
+          >
+            Filter By Category
+          </h4>
           <div className="d-flex flex-column">
             {categories?.map((c) => (
               <Checkbox
@@ -129,8 +134,9 @@ const HomePage = () => {
               </Checkbox>
             ))}
           </div>
+          {/* <hr style={{backgroundColor:"green",height:"4px",width:"80px",margin:"auto",marginTop:"15px"}}></hr> */}
           {/* price filter */}
-          <h4 className="text-center mt-4">Filter By Price</h4>
+          <h4 className="text-center mt-2">Filter By Price</h4>
           <div className="d-flex flex-column">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
               {Prices?.map((p) => (
@@ -142,7 +148,7 @@ const HomePage = () => {
           </div>
           <div className="d-flex flex-column">
             <button
-              className="btn btn-danger"
+              className="btn btn-success"
               onClick={() => window.location.reload()}
             >
               RESET FILTERS

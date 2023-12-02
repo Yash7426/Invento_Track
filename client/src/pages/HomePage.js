@@ -110,10 +110,11 @@ const HomePage = () => {
     <Layout title={"ALl Products - Best offers "}>
       {/* banner image */}
       <img
-        src="/images/banner.png"
+        src="/images/banner3.jpg"
         className="banner-img"
         alt="bannerimage"
         width={"100%"}
+        height={"300px"}
       />
       {/* banner image */}
       <div className="container-fluid row mt-3 home-page">
@@ -156,7 +157,6 @@ const HomePage = () => {
           </div>
         </div>
         <div className="col-md-9 ">
-          <h1 className="text-center">All Products</h1>
           <div className="d-flex flex-wrap">
             {products?.map((p) => (
               <div className="card m-2" key={p._id}>
@@ -164,6 +164,7 @@ const HomePage = () => {
                   src={`/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
+                  width={"250px"}
                 />
                 <div className="card-body">
                   <div className="card-name-price">
@@ -180,6 +181,7 @@ const HomePage = () => {
                   </p>
                   <div className="card-name-price">
                     <button
+                      style={{backgroundColor:"white",color:"green",borderColor:"green"}}
                       className="btn btn-info ms-1"
                       onClick={() => navigate(`/product/${p.slug}`)}
                     >
@@ -187,6 +189,7 @@ const HomePage = () => {
                     </button>
                     <button
                       className="btn btn-dark ms-1"
+                      style={{backgroundColor:"green",borderColor:"white"}}
                       onClick={() => {
                         setCart([...cart, p]);
                         localStorage.setItem(

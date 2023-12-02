@@ -8,56 +8,84 @@
   min-height: 70vh;
   flex-direction: column;
   background-color: #ffdee9;
-  background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
+   background-color: #378b29;
+background-image: linear-gradient(315deg, #378b29 0%, #ffffff 74%);
 }
 
 .form-container form {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: 50vh;
+  width: 50vw;
   padding: 20px;
-  background-color: #fff;
+background: rgba(255, 255, 255, 0.36);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(8.9px);
+-webkit-backdrop-filter: blur(8.9px);
+border: 1px solid rgba(255, 255, 255, 0.98);
 }
 
 .form-container form .title {
   text-align: center;
   margin-bottom: 15px;
   font-weight: bold;
-  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  color: #378b29;
+  text-shadow: -2px 2px 5px rgba(60, 128, 81, 1);
 }
 
 .form-container form input {
+  /* display: block;
   border: none;
-  border-bottom: 1px solid #000;
-  border-radius: 0;
+  padding: 10px 0;
+  height: 26px;
+  border-bottom: solid 1px #1abc9c;
+  background-color: transparent;
+  border-radius: 0; */
+  display: block;
+  border: none;
+  border-bottom: solid 1px #1abc9c;
+  transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  /* background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #56726d 4%); */
+  background-color: transparent;
+  background-position: -200px 0;
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  color: #0e6252;
 }
 
-.form-container form button {
-  border: 1px solid black;
-  border-radius: 0;
-  background-color: #000;
-  color: white;
-  width: 250px;
+.form-container form input:focus{
+  box-shadow: none;
+  outline: none;
+  border-bottom: solid 1px #080909;
+
+  background-color: transparent;
+  background-position: 0 0;
 }
 
+.form-container form input:focus::placeholder, input:valid::placeholder {
+  color: #1abc9c;
+  font-size: 11px;
+  transform: translateY(-10px);
+  visibility: visible !important;
+}
+
+.form-container form button{
+    border: none;
+    background: #378b29;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 6px;
+    width: 250px;
+    color: white;
+    margin-left: 25px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+
+  
+}
 .form-container form button:hover {
-  border: 1px solid black;
-  background: #000000; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #434343,
-    #000000
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #434343,
-    #000000
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
+  /* transform: translateY(-3px); */
+  background-color: #378b29;
+  /* box-shadow: 0 6px 6px 0 rgba(17, 255, 4, 0.2); */
 
-.forgot-btn {
-  background-color: #434343a4 !important;
-  border: 0 !important;
-}
-
-.forgot-btn:hover {
-  color: white !important;
+  box-shadow: 0 6px 6px 0 rgba(17, 255, 4, 0.2);
 }
